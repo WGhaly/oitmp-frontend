@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { Menu, Bell, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,12 +30,14 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
           <Menu className="h-6 w-6" />
         </Button>
 
-        {/* Page Title Area */}
-        <div className="flex-1">
+        {/* Logo and Title */}
+        <Link href="/dashboard" className="flex-1 flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Image src="/nctc-logo.png" alt="NCTC Logo" width={100} height={33} className="h-8 w-auto hidden md:block" />
+          <div className="h-6 w-px bg-gray-300 hidden md:block" />
           <h1 className="text-lg font-semibold text-brand-navy md:text-xl">
-            Welcome to OITMP
+            OITMP
           </h1>
-        </div>
+        </Link>
 
         {/* Right Side Actions */}
         <div className="flex items-center gap-2">

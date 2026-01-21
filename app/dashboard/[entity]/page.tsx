@@ -304,7 +304,7 @@ export default function EntityPage({ params }: PageProps) {
                       toast.error(`Please create a ${ENTITY_LABELS[entityName]} record first`);
                     }
                   }}
-                  className="bg-white/10 hover:bg-white/20 backdrop-blur rounded-md px-3 py-2 text-sm text-left transition-all border border-white/20 flex items-center gap-2 min-w-[160px]"
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur rounded-md px-3 py-2 text-sm text-left transition-all border border-white/20 flex items-center gap-2 w-auto whitespace-nowrap"
                   title={action.description}
                 >
                   <Icon className="h-3.5 w-3.5" />

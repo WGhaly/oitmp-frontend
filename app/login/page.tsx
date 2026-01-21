@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,7 +30,24 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-navy via-brand-blue to-brand-lightBlue p-4">
+    <div className="min-h-screen bg-gradient-to-br from-brand-navy via-brand-blue to-brand-lightBlue">
+      {/* Header */}
+      <header className="border-b bg-white/10 backdrop-blur-lg sticky top-0 z-50">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <Image src="/nctc-logo.png" alt="NCTC Logo" width={120} height={40} className="h-10 w-auto" />
+            <div className="h-8 w-px bg-white/30" />
+            <span className="text-xl font-bold text-white">OITMP</span>
+          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/register">
+              <Button variant="ghost" className="text-white hover:bg-white/10">Register</Button>
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      <div className="flex items-center justify-center p-4" style={{ minHeight: 'calc(100vh - 4rem)' }}>
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <div className="flex items-center gap-2 mb-4">
