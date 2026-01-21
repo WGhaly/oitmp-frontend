@@ -22,9 +22,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import { MoreVertical, Eye, Edit, Trash2, Columns } from "lucide-react";
+import { MoreVertical, Eye, Edit, Trash2, Columns, Download, Copy } from "lucide-react";
 import type { AnyEntity, FieldMetadata } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 interface EntityTableProps {
   data: AnyEntity[];
@@ -39,6 +40,8 @@ interface EntityTableProps {
 }
 
 export function EntityTable({ data, fields, onView, onEdit, onDelete, quickActions, onQuickAction, searchTerm, visibleColumns }: EntityTableProps) {
+  const [selectedRows, setSelectedRows] = useState<Set<string>>(new Set());
+
   // Filter available fields for column selection (exclude complex types and password)
   const availableFields = fields.filter(
     (field) =>
@@ -48,6 +51,56 @@ export function EntityTable({ data, fields, onView, onEdit, onDelete, quickActio
 
   // Get visible fields based on selection
   const visibleFields = availableFields.filter(field => visibleColumns.includes(field.name));
+
+  // Toggle single row selection
+  const toggleRow = (id: string) => {
+    const newSelected = new Set(selectedRows);
+    if (newSelected.has(id)) {
+      newSelected.delete(id);
+    } else {
+      newSelected.add(id);
+    }
+    setSelectedRows(newSelected);
+  };
+
+  // Toggle all rows
+  const toggleAll = () => {
+    if (selectedRows.size === data.length) {
+      setSelectedRows(new Set());
+    } else {
+      setSelectedRows(new Set(data.map((r) => r.id)));
+    }
+  };
+
+  // Mass actions
+  const handleMassExport = () => {
+    const selectedData = data.filter(r => selectedRows.has(r.id));
+    const csv = [
+      visibleFields.map(f => f.label).join(","),
+      ...selectedData.map(record =>
+        visibleFields.map(field => String(record[field.name] || "")).join(",")
+      )
+    ].join("\\n");
+    
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `export-${Date.now()}.csv`;
+    a.click();
+    toast.success(`Exported ${selectedRows.size} records`);
+  };
+
+  const handleMassDelete = () => {
+    if (confirm(`Delete ${selectedRows.size} selected records?`)) {
+      selectedRows.forEach(id => {
+        const record = data.find(r => r.id === id);
+        if (record) onDelete(record);
+      });
+      setSelectedRows(new Set());
+      toast.success(`Deleted ${selectedRows.size} records`);
+    }
+  };
 
   // Filter data based on search term
   const filteredData = data.filter((record: any) => {
@@ -86,10 +139,34 @@ export function EntityTable({ data, fields, onView, onEdit, onDelete, quickActio
   };
 
   return (
-    <div className="rounded-md border bg-white">
+    <>
+      {/* Mass Actions Bar */}
+      {selectedRows.size > 0 && (
+        <div className="bg-brand-blue text-white px-4 py-2 rounded-t-md flex items-center justify-between">
+          <span className="text-sm font-medium">{selectedRows.size} selected</span>
+          <div className="flex gap-2">
+            <Button size="sm" variant="secondary" onClick={handleMassExport} className="h-7">
+              <Download className="h-3.5 w-3.5 mr-1.5" />
+              Export
+            </Button>
+            <Button size="sm" variant="destructive" onClick={handleMassDelete} className="h-7">
+              <Trash2 className="h-3.5 w-3.5 mr-1.5" />
+              Delete
+            </Button>
+          </div>
+        </div>
+      )}
+
+      <div className={cn("rounded-md border bg-white", selectedRows.size > 0 && "rounded-t-none")}>
         <Table>
           <TableHeader>
             <TableRow>
+              <TableHead className="w-[50px]">
+                <Checkbox
+                  checked={selectedRows.size === data.length && data.length > 0}
+                  onCheckedChange={toggleAll}
+                />
+              </TableHead>
               {visibleFields.map((field) => (
                 <TableHead key={field.name} className="font-semibold">
                   {field.label}
@@ -103,6 +180,12 @@ export function EntityTable({ data, fields, onView, onEdit, onDelete, quickActio
             {filteredData.length > 0 ? (
               filteredData.map((record: any) => (
                 <TableRow key={record.id} className="hover:bg-gray-50">
+                  <TableCell>
+                    <Checkbox
+                      checked={selectedRows.has(record.id)}
+                      onCheckedChange={() => toggleRow(record.id)}
+                    />
+                  </TableCell>
                   {visibleFields.map((field) => (
                     <TableCell key={field.name}>
                       {formatCellValue(record[field.name], field)}
@@ -158,7 +241,7 @@ export function EntityTable({ data, fields, onView, onEdit, onDelete, quickActio
             ) : (
               <TableRow>
                 <TableCell
-                  colSpan={visibleFields.length + 1}
+                  colSpan={visibleFields.length + 2}
                   className="h-24 text-center"
                 >
                   <div className="text-gray-500">
@@ -169,6 +252,7 @@ export function EntityTable({ data, fields, onView, onEdit, onDelete, quickActio
             )}
           </TableBody>
         </Table>
-    </div>
+      </div>
+    </>
   );
 }

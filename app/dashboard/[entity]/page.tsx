@@ -285,12 +285,12 @@ export default function EntityPage({ params }: PageProps) {
 
       {/* Quick Actions - Workflow Based */}
       {quickActions.length > 0 && (
-        <div className="bg-gradient-to-r from-brand-blue to-brand-lightBlue rounded-lg p-6 text-white">
-          <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-            <ArrowRight className="h-5 w-5" />
-            Quick Actions - Next Steps in Workflow
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="bg-gradient-to-r from-brand-blue to-brand-lightBlue rounded-lg p-4 text-white">
+          <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
+            <ArrowRight className="h-4 w-4" />
+            Next Steps
+          </h3>
+          <div className="flex flex-wrap gap-2">
             {quickActions.map((action, index) => {
               const Icon = action.icon;
               return (
@@ -304,15 +304,11 @@ export default function EntityPage({ params }: PageProps) {
                       toast.error(`Please create a ${ENTITY_LABELS[entityName]} record first`);
                     }
                   }}
-                  className="bg-white/10 hover:bg-white/20 backdrop-blur rounded-lg p-4 text-left transition-all border border-white/20"
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur rounded-md px-3 py-2 text-sm text-left transition-all border border-white/20 flex items-center gap-2"
+                  title={action.description}
                 >
-                  <div className="flex items-start gap-3">
-                    <Icon className="h-5 w-5 mt-0.5" />
-                    <div>
-                      <div className="font-medium">{action.label}</div>
-                      <div className="text-sm text-white/80 mt-1">{action.description}</div>
-                    </div>
-                  </div>
+                  <Icon className="h-3.5 w-3.5" />
+                  <span>{action.label}</span>
                 </button>
               );
             })}
