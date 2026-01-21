@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, User, Settings, ChevronRight, ChevronDown, Menu } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ENTITY_LABELS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -92,10 +93,9 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
     <div className="flex flex-col h-full bg-white border-r border-gray-200">
       {/* Logo Section */}
       <div className="p-6 border-b border-gray-200">
-        <Link href="/dashboard" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">O</span>
-          </div>
+        <Link href="/dashboard" className="flex items-center gap-3">
+          <Image src="/nctc-logo.png" alt="NCTC Logo" width={100} height={33} className="h-8 w-auto" />
+          <div className="h-8 w-px bg-gray-300" />
           <div>
             <p className="font-bold text-brand-navy text-lg">OITMP</p>
             <p className="text-xs text-gray-500">Innovation Platform</p>
