@@ -104,24 +104,39 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-muted/50 mb-6">
+          <div className="text-center max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-muted/50 mb-6"
+            >
               <Sparkles className="h-4 w-4 text-[#243996]" />
               <span className="text-sm font-medium">Innovation Management Platform</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 tracking-tight">
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-5xl md:text-7xl font-bold text-foreground mb-6 tracking-tight"
+            >
               Office of Innovation & Technology Management
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
+            >
               Streamline your innovation pipeline from research to commercialization. 
               Manage IP, funding, and collaborations in one comprehensive platform.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <Link href="/register">
                 <Button size="lg" className="bg-[#243996] hover:bg-[#4a81f6] text-lg px-8">
                   Start Free Trial
@@ -133,8 +148,8 @@ export default function LandingPage() {
                   View Demo
                 </Button>
               </Link>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -177,6 +192,7 @@ export default function LandingPage() {
               icon={<Lock className="h-4 w-4" />}
               title="IP Protection"
               description="Comprehensive patent, trademark, and IP management. Track applications, disclosures, and prior art searches."
+              centerContent
             />
             <GridItem
               area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
@@ -266,9 +282,10 @@ interface GridItemProps {
   icon: React.ReactNode;
   title: string;
   description: React.ReactNode;
+  centerContent?: boolean;
 }
 
-const GridItem = ({ area, icon, title, description }: GridItemProps) => {
+const GridItem = ({ area, icon, title, description, centerContent = false }: GridItemProps) => {
   return (
     <li className={cn("min-h-[14rem] list-none", area)}>
       <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
@@ -280,8 +297,14 @@ const GridItem = ({ area, icon, title, description }: GridItemProps) => {
           inactiveZone={0.01}
           borderWidth={3}
         />
-        <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-          <div className="relative flex flex-1 flex-col justify-between gap-3">
+        <div className={cn(
+          "relative flex h-full flex-col gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6",
+          centerContent ? "justify-center items-center text-center" : "justify-between"
+        )}>
+          <div className={cn(
+            "relative flex flex-1 flex-col gap-3",
+            centerContent ? "justify-center items-center" : "justify-between"
+          )}>
             <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
               {icon}
             </div>
