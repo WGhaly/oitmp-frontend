@@ -78,7 +78,7 @@ export function EntityTable({ data, fields, onView, onEdit, onDelete, quickActio
     const csv = [
       visibleFields.map(f => f.label).join(","),
       ...selectedData.map(record =>
-        visibleFields.map(field => String(record[field.name] || "")).join(",")
+        visibleFields.map(field => String((record as any)[field.name] || "")).join(",")
       )
     ].join("\\n");
     
