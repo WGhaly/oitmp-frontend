@@ -11,58 +11,58 @@ import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
-    text: "OITMP transformed how we manage our research portfolio. The workflow automation saved us countless hours.",
+    text: "OITMP transformed our technology transfer office. The automated workflow from invention disclosure to patent filing reduced our processing time by 60%.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
     name: "Dr. Sarah Chen",
-    role: "Director of Innovation",
+    role: "Director, Office of Technology Commercialization",
   },
   {
-    text: "The IP management tools are exceptional. We can now track all our patents and licensing agreements in one place.",
+    text: "Managing our IP portfolio has never been easier. We can track every patent application, licensing agreement, and commercialization milestone in real-time.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
     name: "Ahmed Hassan",
-    role: "Technology Transfer Manager",
+    role: "Technology Licensing Manager",
   },
   {
-    text: "Excellent platform for managing industry collaborations. The quick actions feature is a game-changer.",
+    text: "The industry collaboration features helped us connect with the right partners. We've signed 3 major licensing deals this quarter alone.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
     name: "Maria Rodriguez",
-    role: "Research Coordinator",
+    role: "Business Development Officer",
   },
   {
-    text: "The system made funding proposal management so much easier. We've increased our success rate by 40%.",
+    text: "Prior art searches and patent analytics are now centralized. Our researchers can see the IP landscape before they even file a disclosure.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
     name: "Dr. James Wilson",
-    role: "Grant Administrator",
+    role: "IP Strategy Advisor",
   },
   {
-    text: "Outstanding support and intuitive interface. Our entire team was productive within days of implementation.",
+    text: "From disclosure intake to market assessment, OITMP guides our team through each stage. New staff members are productive within days.",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150",
     name: "Fatima Al-Rashid",
-    role: "Innovation Lead",
+    role: "Technology Transfer Associate",
   },
   {
-    text: "The real-time collaboration features have revolutionized how our research teams work together across departments.",
+    text: "The technology assessment tools help us make data-driven decisions on which innovations to commercialize. Our ROI has significantly improved.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
     name: "Dr. Michael Park",
-    role: "Research Director",
+    role: "Commercialization Director",
   },
   {
-    text: "OITMP's comprehensive approach to managing the innovation lifecycle is unmatched. Highly recommended.",
+    text: "Managing know-how, design rights, and patents across multiple jurisdictions used to be a nightmare. OITMP makes it seamless.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
     name: "Elena Popov",
-    role: "IP Manager",
+    role: "IP Portfolio Manager",
   },
   {
-    text: "The reporting and analytics capabilities provide incredible insights into our technology transfer operations.",
+    text: "The analytics dashboard gives leadership clear visibility into our technology transfer pipeline and performance metrics.",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150",
     name: "David Thompson",
-    role: "Operations Manager",
+    role: "Associate Vice President for Innovation",
   },
   {
-    text: "We've streamlined our entire innovation pipeline. From disclosure to commercialization, everything is seamless.",
+    text: "Industry challenge matching has opened new revenue streams. Companies post challenges and our researchers propose solutions—all within OITMP.",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
     name: "Sophia Martinez",
-    role: "Innovation Strategist",
+    role: "Industry Partnership Coordinator",
   },
 ];
 
@@ -107,36 +107,26 @@ export default function LandingPage() {
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto">
           <div className="text-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-muted/50 mb-6"
-            >
-              <Sparkles className="h-4 w-4 text-[#243996]" />
-              <span className="text-sm font-medium">Innovation Management Platform</span>
-            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.5 }}
               className="text-5xl md:text-7xl font-bold text-foreground mb-6 tracking-tight"
             >
-              Office of Innovation & Technology Management
+              Open Innovation & Technology Management Platform
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
             >
-              Streamline your innovation pipeline from research to commercialization. 
-              Manage IP, funding, and collaborations in one comprehensive platform.
+              Empower your Office of Technology Commercialization to manage the complete innovation lifecycle—from research disclosures and IP protection to licensing, commercialization, and industry partnerships.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <Link href="/register">
@@ -165,14 +155,11 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="text-center mb-16 max-w-2xl mx-auto"
           >
-            <div className="flex justify-center mb-4">
-              <div className="border py-1 px-4 rounded-lg text-sm">Features</div>
-            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-              Everything you need
+              Complete Technology Transfer Management
             </h2>
             <p className="text-xl text-muted-foreground">
-              Comprehensive tools for managing your entire innovation lifecycle
+              Built specifically for Offices of Technology Commercialization to streamline every stage of innovation
             </p>
           </motion.div>
 
@@ -180,33 +167,33 @@ export default function LandingPage() {
             <GridItem
               area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
               icon={<Box className="h-4 w-4" />}
-              title="Research Management"
-              description="Track research projects, teams, and outputs from conception to completion with comprehensive workflow automation."
+              title="Research & Invention Disclosure"
+              description="Capture and manage invention disclosures from researchers. Track research outputs, patents, and intellectual property from initial disclosure through commercialization."
             />
             <GridItem
               area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
               icon={<Settings className="h-4 w-4" />}
-              title="Dynamic Entity System"
-              description="21 entity types with full CRUD operations. Metadata-driven architecture adapts to your needs."
+              title="Automated Workflow Management"
+              description="Smart workflow automation guides your team through each stage—from prior art searches to patent filing, licensing negotiations, and technology transfer agreements."
             />
             <GridItem
               area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
               icon={<Lock className="h-4 w-4" />}
-              title="IP Protection"
-              description="Comprehensive patent, trademark, and IP management. Track applications, disclosures, and prior art searches."
+              title="IP Portfolio Management"
+              description="Comprehensive management of patents, trademarks, design rights, and know-how. Track patent applications, maintenance fees, and licensing agreements in one centralized system."
               centerContent
             />
             <GridItem
               area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
               icon={<Sparkles className="h-4 w-4" />}
-              title="Workflow Quick Actions"
-              description="Streamline your processes with intelligent quick actions that prefill data and guide you through workflows."
+              title="Technology Assessment & Valuation"
+              description="Conduct technical and market assessments to evaluate commercialization potential. Make data-driven decisions on which innovations to pursue."
             />
             <GridItem
               area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
               icon={<Search className="h-4 w-4" />}
-              title="Advanced Search & Filtering"
-              description="Powerful search across all entities with customizable column selection and instant filtering."
+              title="Industry Collaboration Hub"
+              description="Connect with industry partners through challenge-solution matching. Manage consultations, proposals, and funding opportunities seamlessly."
             />
           </ul>
         </div>
@@ -222,15 +209,11 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
           >
-            <div className="flex justify-center">
-              <div className="border py-1 px-4 rounded-lg">Testimonials</div>
-            </div>
-
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5">
-              What our users say
+              Trusted by Leading Institutions
             </h2>
             <p className="text-center mt-5 opacity-75">
-              See what our customers have to say about us.
+              See how technology transfer offices are transforming their operations with OITMP.
             </p>
           </motion.div>
 
@@ -252,10 +235,10 @@ export default function LandingPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-white mb-4">
-              Ready to Transform Your Innovation Process?
+              Ready to Transform Your Technology Transfer Operations?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Join leading organizations in streamlining their technology transfer operations
+              Join research institutions and universities worldwide in streamlining their innovation management
             </p>
             <Link href="/register">
               <Button size="lg" variant="secondary" className="text-lg px-8">
